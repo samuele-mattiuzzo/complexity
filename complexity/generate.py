@@ -144,7 +144,10 @@ def generate_html(templates_dir, output_dir, context=None,
                 templates_dir
             )
 
-            force_unexpanded = template_filepath in unexpanded_templates
+            force_unexpanded = (
+                template_filepath in unexpanded_templates or
+                "all" in unexpanded_templates
+            )
             logging.debug('Is {0} in {1}? {2}'.format(
                 template_filepath,
                 unexpanded_templates,
