@@ -107,7 +107,7 @@ def generate_html_file(template_filepath,
 
 
 def generate_html(templates_dir, output_dir, context=None,
-                  unexpanded_templates=()):
+                  unexpanded_templates=(), unexpand_all=True):
     """
     Renders the HTML templates from `templates_dir`, and writes them to
     `output_dir`.
@@ -146,8 +146,9 @@ def generate_html(templates_dir, output_dir, context=None,
 
             force_unexpanded = (
                 template_filepath in unexpanded_templates or
-                "all" in unexpanded_templates
+                unexpand_all
             )
+
             logging.debug('Is {0} in {1}? {2}'.format(
                 template_filepath,
                 unexpanded_templates,
